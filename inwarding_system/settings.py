@@ -164,5 +164,5 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # Settings to be used when running in live server of heroku, staticfiles=False means it will ignore the locally setup static files and
 # will connect directlyl to aws s3 (amazon) for static files requirement
 # Note that static files requirements to be initially uploaded on aws s3 (amazon) server
-#django_heroku.settings(locals(), staticfiles=False) # Use this if you want to use static files saved in aws s3 (amazon)
-django_heroku.settings(locals()) # Use this if you want to use local static files 
+django_heroku.settings(locals(), staticfiles=False) # Use this if you want to use static files saved in aws s3 (amazon)
+# django_heroku.settings(locals()) # Use this if you want to use local static files 
