@@ -1,0 +1,1 @@
+web: gunicorn inwarding_system.wsgi

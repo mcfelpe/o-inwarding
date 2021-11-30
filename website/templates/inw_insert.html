@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		
+		<!-- Main content -->
+		<section class="content">
+
+		 <!-- Basic Forms -->
+		  <div class="box">
+			<div class="box-header with-border">
+				<h3 class="box-title">Insert Data</h3>
+				<h6 class="box-subtitle">Insert your inwards</h6>
+			  </div>
+			
+			<!-- /.box-header -->
+			<div class="box-body">
+			  <div class="row">
+				<div class="col">
+					<form class="needs-validation" novalidate method="POST" enctype="multipart/form-data" action="{% url 'inw_insert' %}">
+					{% csrf_token %}
+					  <div class="row">
+						<div class="col-12">						
+							<div class="form-group">
+								<h5>Item Name&nbsp; <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input type="text" name="inw_item_name" class="form-control" required data-validation-required-message="This field is required"> 
+									<div class="form-control-feedback"><small>Insert the item you purchased.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Location <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<select name="inw_location" id="select" required class="form-select">
+										<option value="">Select Location</option>
+										<option value="Dahra Main Office">Dahra Main Office</option>
+										<option value="KNO">KNO</option>
+										<option value="ISC">ISC</option>
+										<option value="Messaid">Messaid</option>
+									</select>
+								</div>
+								<div class="form-control-feedback"><small>Select on the dropdown the location where this item will be used.  This field is <code>required</code></small>.</div>
+							</div>
+							<div class="form-group">
+								<h5>Description <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<textarea name="inw_description" id="description" class="form-control" required placeholder="Item Description"></textarea>
+								</div>
+								<div class="form-control-feedback"><small>Give a brief description of the item.  This field is <code>required</code></small>.</div>
+							</div>
+							<div class="form-group">
+								<h5>Make & Model&nbsp; <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input type="text" name="inw_make_model" class="form-control" required data-validation-required-message="This field is required"> 
+									<div class="form-control-feedback"><small>What is the make & model of this item.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Quantity&nbsp; <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input type="number" name="inw_quantity" class="form-control" required data-validation-required-message="This field is required"> 
+									<div class="form-control-feedback"><small>How many did you purchased?  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Vendor Name&nbsp;&nbsp; <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input type="text" name="inw_vendor_name" class="form-control" required data-validation-required-message="This field is required">
+									<div class="form-control-feedback"><small>Insert the name of the vendor where the item is purchased.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Date of Purchase&nbsp; <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input type="date" name="inw_date_of_purchase" class="form-control" required data-validation-required-message="This field is required"> </div> 
+									<div class="form-control-feedback"><small>Insert the date when the item is purchased.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Unit Cost <span class="text-danger">*</span></h5>
+								<div class="input-group"> <span class="input-group-addon">QAR</span>
+									<input type="number" name="inw_unit_cost" class="form-control" required data-validation-required-message="This field is required">	
+								</div>
+								<div class="form-control-feedback"><small>Select the currency and input the cost of the item.  This field is <code>required</code></small>.</div>
+							</div>
+						  	<div class="form-group">
+								<h5>Category <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<select name="inw_category" id="category" required class="form-select">
+										<option value="">Select Category</option>
+										<option value="Permanent - Computer & Peripheral">Permanent - Computer & Peripheral</option>
+										<option value="Permanent - Furniture & Fixtures">Permanent - Furniture & Fixtures</option>
+										<option value="Permanent - Office Equipment">Permanent - Office Equipment</option>
+										<option value="Permanent - Office Renovation">Permanent - Office Renovation</option>
+										<option value="Permanent - Motor Vehicle">Permanent - Motor Vehicle</option>
+										<option value="Consumables - IT Consumables">Consumables - IT Consumables</option>
+										<option value="Consumables - Hygiene">Consumables - Hygiene</option>
+										<option value="Consumables - Pantry">Consumables - Pantry</option>
+										<option value="Consumables - Stationery">Consumables - Stationery</option>
+									</select>
+									<div class="form-control-feedback"><small>Select the category from the dropdown.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Type <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<select name="inw_type" id="type" required class="form-select">
+										<option value="">Select Type</option>
+										<option value="Inventory">Inventory</option>
+										<option value="Services">Services</option>
+									</select>
+									<div class="form-control-feedback"><small>Select the type from the dropdown.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Remarks</h5>
+								<div class="controls">
+									<textarea name="inw_remarks" id="textarea" class="form-control" placeholder="Additional Remarks"></textarea>
+									<div class="form-control-feedback"><small>Add additional remarks if there's any.</small></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Upload Screenshot</h5>
+								<div class="controls">
+									<input type="file" name="inw_img" id="inw_img" class="form-control">
+									<div class="form-control-feedback"><small>Upload pdf/jpg file of the bill</small>.</div>
+								</div>
+							</div>
+							<input type="text" name="inw_owner" hidden value="{{ user }}">
+							<input type="text" name="inw_sourcing_department" hidden value="{{ user.filtering.user_department }}">
+							<input type="text" name="inw_user_group" hidden value="{{ user.filtering.user_filter_group }}">
+						<div class="text-xs-right">
+							<button type="submit" class="btn btn-info">Submit</button>
+						</div>
+					</div>
+				</form>
+	
+				</div>
+				<!-- /.col -->
+			  </div>
+			  <!-- /.row -->
+			</div>
+			<!-- /.box-body -->
+		  </div>
+		  <!-- /.box -->
+
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+{% endblock %}

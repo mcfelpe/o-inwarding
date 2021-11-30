@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+{% load icon %}
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		
+		<!-- Main content -->
+		<section class="content">
+		  <div class="row">
+
+			<div class="col-12">
+
+			  <div class="box">
+				<div class="box-header with-border">
+				  <h3 class="box-title">HOD Approval</h3>
+                  <h6 class="box-subtitle">Head of Department to approve entry</h6><br />
+                  <a href="{% url 'inw_data_table' %}" class="btn btn-secondary" role="button" aria-disabled="true">{% icon "arrow-left" class="css-class" height="12" width="12" %} Back to list</a> <br /><br />
+                                    {% if hod_item.inw_admin_approve == False %}
+                                    <form action="" method="POST">{% csrf_token %}<input type="text" name="inw_admin_approve" hidden value="True"><button type="submit" class="btn btn-info">{% icon "check-circle" class="css-class" height="12" width="12" %} Click To Approve</button></form>
+                                    {% elif hod_item.inw_admin_approve == True %}
+                                    <form action="" method="POST">{% csrf_token %}<input type="text" name="inw_admin_approve" hidden value="False"><button type="submit" class="btn btn-danger">{% icon "x-circle" class="css-class" height="12" width="12" %} Click To Un-Approve</button></form>
+                                    {% endif %}
+				</div>
+				<!-- /.box-header -->
+				
+				<div class="box-body">
+					<div class="table-responsive">
+					  <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+						    <tr>
+                                <th width="20%">Owner</th>
+                                <td>{{ hod_item.inw_owner }}</td>
+                            </tr>
+                            <tr>
+                                <th>Item Name</th>
+                                <td>{{ hod_item.inw_item_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Location</th>
+                                <td>{{ hod_item.inw_location }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ hod_item.inw_description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Make & Model</th>
+                                <td>{{ hod_item.inw_make_model }}</td>
+                            </tr>
+                            <tr>
+                                <th>Quantity</th>
+                                <td>{{ hod_item.inw_quantity }}</td>
+                            </tr>
+                            <tr>
+                                <th>Vendor Name</th>
+                                <td>{{ hod_item.inw_vendor_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date of Purchase</th>
+                                <td>{{ hod_item.inw_date_of_purchase }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sourcing Department</th>
+                                <td>{{ hod_item.inw_sourcing_department }}</td>
+                            </tr>
+                            <tr>
+                                <th>Unit Cost</th>
+                                <td>{{ hod_item.inw_unit_cost }}</td>
+                            </tr>
+                            <tr>
+                                <th>Category</th>
+                                <td>{{ hod_item.inw_category }}</td>
+                            </tr>
+                            <tr>
+                                <th>Type</th>
+                                <td>{{ hod_item.inw_type }}</td>
+                            </tr>
+                            <tr>
+                                <th>Remarks</th>
+                                <td>{{ hod_item.inw_remarks }}</td>
+                            </tr>  
+                            <tr>
+                                <th>Approved by Admin / HOD</th>
+                                <td>
+                                    {% if hod_item.inw_admin_approve ==  False %}
+									    Inward needs approval from HOD
+									{% elif hod_item.inw_admin_approve ==  True%}
+                                        Inward approved by HOD
+									{% endif %}
+                                </td>
+                            </tr>  
+                            <tr>
+                                <th>Approved by Finance</th>
+                                <td>
+                                    {% if hod_item.inw_finance_approve ==  False %}
+                                        Inward needs approval from FINANCE
+									{% elif hod_item.inw_finance_approve ==  True %}
+                                        Inward approved by FINANCE
+									{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reciept</th>
+                                <td>
+                                    {% if hod_item.inw_img %}<img src="{{ hod_item.inw_img.url }}">{% endif %}
+                                </td>
+                            </tr>  
+					</table>
+					</div>              
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->          
+			</div>
+			<!-- /.col -->
+		  </div>
+		  <!-- /.row -->
+		</section>
+		<!-- /.content -->
+	  
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  {% endblock %}

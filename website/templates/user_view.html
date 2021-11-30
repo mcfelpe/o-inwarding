@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="me-auto">
+					<h4 class="page-title">View User</h4>
+					<div class="d-inline-block align-items-center">
+						<nav>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+								<li class="breadcrumb-item" aria-current="page">Inwarding</li>
+								<li class="breadcrumb-item active" aria-current="page">View User</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				
+			</div>
+		</div>	  
+
+		<!-- Main content -->
+		<section class="content">
+
+		 <!-- Basic Forms -->
+		  <div class="box">
+			
+			<!-- /.box-header -->
+			<div class="box-body">
+			  <div class="row">
+				<div class="col">
+					<form novalidate>
+					  <div class="row">
+						<div class="col-12">						
+							<div class="form-group">
+								<h5>Username&nbsp;&nbsp; <span class="text-danger">*</span></h5>
+							  <div class="controls">
+									<input type="text" name="text" class="form-control" required data-validation-required-message="This field is required"> 
+									<div class="form-control-feedback"><small>Create username.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>		
+							<div class="form-group">
+								<h5>Password&nbsp; <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input type="text" name="text" class="form-control" required data-validation-required-message="This field is required"> 
+									<div class="form-control-feedback"><small>Create password.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>User Access <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<select name="select" id="user_access" required class="form-select">
+										<option value="">Select User Access</option>
+										<option value="1">Administrator</option>
+										<option value="2">Employee</option>
+									</select>
+									<div class="form-control-feedback"><small>Select user access from the dropdown.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Department <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<select name="select" id="sourcing_department" required class="form-select">
+										<option value="">Select Department</option>
+										<option value="1">Management</option>
+										<option value="2">Operations</option>
+										<option value="3">T&S</option>
+										<option value="4">E&M</option>
+										<option value="4">S&S</option>
+									</select>
+									<div class="form-control-feedback"><small>Select your department from the dropdown.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>First Name&nbsp; <span class="text-danger">*</span></h5>
+								<div class="controls">
+								  <input type="text" name="text" class="form-control" required data-validation-required-message="This field is required"> 
+									<div class="form-control-feedback"><small>Insert your first name.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h5>Last Name&nbsp; <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input type="text" name="text" class="form-control" required data-validation-required-message="This field is required"> 
+									<div class="form-control-feedback"><small>Insert your last name.  This field is <code>required</code></small>.</div>
+								</div>
+							</div>
+							
+						<div class="text-xs-right">
+							<button type="submit" class="btn btn-info">Submit</button>
+						</div>
+					</div>
+				</form>
+	
+				</div>
+				<!-- /.col -->
+			  </div>
+			  <!-- /.row -->
+			</div>
+			<!-- /.box-body -->
+		  </div>
+		  <!-- /.box -->
+
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  {% endblock %}

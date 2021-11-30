@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		
+		<!-- Main content -->
+		<section class="content">
+		  <div class="row">
+
+			<div class="col-12">
+
+			  <div class="box">
+				<div class="box-header with-border">
+				  <h3 class="box-title">All Inwards (Table)</h3>
+				  <h6 class="box-subtitle">Check database for existing inwards in table form</h6>
+				</div>
+				
+				
+				<!-- /.box-header -->
+				<div class="box-body">
+					<div class="table-responsive">
+						<table id="example1" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+						<thead>
+							<tr>
+							<th width="250x">Owner</th>
+							<th>Item Name</th>
+							<th>Location</th>
+							<th>Description</th>
+							<th>Make & Model</th>
+							<th>Quantity</th>
+							<th>Vendor Name</th>
+							<th>Date of Purchase</th>
+							<th>Unit Cost</th>
+							<th>Category</th>
+							<th>Type</th>
+							<th>Remarks</th>
+							<th>Reciept</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							{% for allitems in all_inwards %}
+
+							<tr>
+								<td>{{ allitems.inw_owner }}</td>
+								<td>{{ allitems.inw_item_name }}</td>
+								<td>{{ allitems.inw_location }}</td>
+								<td>{{ allitems.inw_description }}</td>
+								<td>{{ allitems.inw_make_model }}</td>
+								<td>{{ allitems.inw_quantity }}</td>
+								<td>{{ allitems.inw_vendor_name }}</td>
+								<td>{{ allitems.inw_date_of_purchase }}</td>
+								<td>{{ allitems.inw_unit_cost }}</td>
+								<td>{{ allitems.inw_category }}</td>
+								<td>{{ allitems.inw_type }}</td>
+								<td>{{ allitems.inw_remarks }}</td>
+								<td>{% if allitems.inw_img %}<img src="{{ allitems.inw_img.url }}">{% endif %}</td>
+							</tr>
+							
+							{% endfor %}
+
+						</tbody>				  
+					</table>
+					</div>              
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->    
+			        
+			</div>
+			<!-- /.col -->
+		  </div>
+		  <!-- /.row -->
+		</section>
+		<!-- /.content -->
+	  
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  	
+  {% endblock %}

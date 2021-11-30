@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		
+		<!-- Main content -->
+		<section class="content">
+		  <div class="row">
+
+			<div class="col-12">
+
+			  <div class="box">
+				<div class="box-header with-border">
+				  <h3 class="box-title">All Inwards (Individual)</h3>
+				  <h6 class="box-subtitle">Check database for existing inwards individually</h6>
+				</div>
+				
+				
+				<!-- /.box-header -->
+				<div class="box-body">
+					<div class="table-responsive">
+					  <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+
+                            {% for allitems in ind_inwards %}
+							
+								<tr><th width="250x">Owner</th><td>{{ allitems.inw_owner }}</td></tr>
+								<tr><th>Item Name</th><td>{{ allitems.inw_item_name }}</td></tr>
+								<tr><th>Location</th><td>{{ allitems.inw_location }}</td></tr>
+								<tr><th>Description</th><td>{{ allitems.inw_description }}</td></tr>
+								<tr><th>Make & Model</th><td>{{ allitems.inw_make_model }}</td></tr>
+								<tr><th>Quantity</th><td>{{ allitems.inw_quantity }}</td></tr>
+								<tr><th>Vendor Name</th><td>{{ allitems.inw_vendor_name }}</td></tr>
+								<tr><th>Date of Purchase</th><td>{{ allitems.inw_date_of_purchase }}</td></tr>
+								<tr><th>Unit Cost</th><td>{{ allitems.inw_unit_cost }}</td></tr>
+								<tr><th>Category</th><td>{{ allitems.inw_category }}</td></tr>
+								<tr><th>Type</th><td>{{ allitems.inw_type }}</td></tr>
+								<tr><th>Remarks</th><td>{{ allitems.inw_remarks }}</td></tr>
+								<tr><th>Remarks</th><td>{% if allitems.inw_img %}<img src="{{ allitems.inw_img.url }}">{% endif %}</td></tr>
+                                                        
+                            {% endfor %}
+					  
+					</table>
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+					{% if ind_inwards.has_previous %}
+						<li class="page-item"><a class="page-link" href="?page=1">&laquo;</a></li>
+						<li class="page-item"><a class="page-link" href="?page={{ ind_inwards.previous_page_number }}">Previous</a></li>
+					{% endif %}
+
+					<li class="page-item disabled"><a href="#" class="page-link">Page {{ ind_inwards.number }} of {{ ind_inwards.paginator.num_pages }}</a></li>
+
+					{% if ind_inwards.has_next %}
+						<li class="page-item"><a class="page-link" href="?page={{ ind_inwards.next_page_number }}">Next</a></li>
+						<li class="page-item"><a class="page-link" href="?page={{ ind_inwards.paginator.num_pages }}">&raquo;</a></li>
+					{% endif %}
+				</ul>
+			</nav>
+					</div>              
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->    
+			        
+			</div>
+			<!-- /.col -->
+		  </div>
+		  <!-- /.row -->
+		</section>
+		<!-- /.content -->
+	  
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  	
+  {% endblock %}

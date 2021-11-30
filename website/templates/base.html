@@ -1,0 +1,236 @@
+{% if user.is_authenticated %}
+{% load static %}
+{% load icon %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'website/images/favicon.ico' %}">
+
+    <title>Dahra Global - Inwarding System</title>
+  
+    <!-- Vendors Style-->
+    <link rel="stylesheet" href="{% static 'website/css/vendors_css.css' %}">
+
+    <!-- Style-->  
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/skin_color.css' %}">
+
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+
+    <div class="wrapper">
+        <div id="loader"></div>
+    
+      <header class="main-header">
+        <div class="d-flex align-items-center logo-box justify-content-start">	
+            <!-- Logo -->
+            <a href="#" class="logo">
+              <!-- logo-->
+              <div class="logo-mini w-40">
+                  <span class="light-logo"><img src="{% static 'website/images/dg-logo.png' %}" alt="logo"></span>
+              </div>
+              
+            </a>	
+        </div>  
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <div class="app-menu">
+            <ul class="header-megamenu nav">
+                <li class="btn-group nav-item">
+                    <a href="#" class="waves-effect waves-light nav-link push-btn btn-primary-light" data-toggle="push-menu" role="button">
+                        <i data-feather="align-left"></i>
+                    </a>
+                </li>
+            </ul> 
+          </div>
+            
+          <div class="navbar-custom-menu r-side">
+            <ul class="nav navbar-nav">		  
+               
+                <li class="btn-group nav-item d-lg-inline-flex d-none">
+                    <a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen btn-warning-light" title="Full Screen">
+                        <i data-feather="maximize"></i>
+                    </a>
+                </li>
+                          
+              <!-- User Account-->
+              <li class="dropdown user user-menu">
+                <a href="#" class="waves-effect waves-light dropdown-toggle btn-success-light" data-bs-toggle="dropdown" title="User">
+                    <i data-feather="user"></i>
+                </a>
+                <ul class="dropdown-menu animated flipInX">
+                  <li class="user-body">
+                     <a class="dropdown-item" href="#">{% icon "user-check" class="css-class" height="12" width="12" %} {{ user }}</a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="{% url 'logout_user' %}">{% icon "log-out" class="css-class" height="12" width="12" %} Logout</a>
+                  </li>
+                </ul>
+              </li>	               
+            </ul>
+          </div>
+        </nav>
+      </header>
+      
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar-->
+        <section class="sidebar position-relative">
+            <div class="user-panel">
+                
+                <div class="info">
+                  <p>Your User Access Is</p>
+                  <a href="#"><i class="fa fa-circle text-success"></i> {{ user.filtering.user_filter_group }}</a>
+                </div>
+            </div>
+              <div class="multinav">
+              <div class="multinav-scroll" style="height: 100%;">	
+                  <!-- sidebar menu-->			  
+                    <ul class="sidebar-menu">
+                      {% if showURL == "/inw_data_table" %}  
+                        <li class="active">
+                      {% else %} 
+                        <li>
+                      {% endif %}
+                          <a href="/inw_data_table">
+                            <i data-feather="database"></i>
+                            <span>My Inwards</span>
+                          </a>
+                        </li>  
+                      {% if showURL == "/inw_insert" %}  
+                        <li class="active">
+                      {% else %} 
+                        <li>
+                      {% endif %}
+                          <a href="/inw_insert">
+                            <i data-feather="plus-circle"></i>
+                            <span>Insert Data</span>
+                          </a>
+                        </li>
+                      {% if showURL == "/inw_all_table" %}  
+                        <li class="active">
+                      {% else %} 
+                        <li>
+                      {% endif %}
+                          <a href="/inw_all_table">
+                            <i data-feather="package"></i>
+                            <span>All Inwards (Table)</span>
+                          </a>
+                        </li>
+                      {% if showURL == "/inw_ind_table" %}  
+                        <li class="active">
+                      {% else %} 
+                        <li>
+                      {% endif %}
+                          <a href="/inw_ind_table">
+                            <i data-feather="box"></i>
+                            <span>All Inwards (Individual)</span>
+                          </a>
+                        </li>
+                      </ul> 
+                    <div class="sidebar-widgets">
+                    <div class="copyright text-center m-25">
+                        <p><strong class="d-block">Inwarding System</strong> © 2021 All Rights Reserved</p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </section>
+      </aside>
+      
+{% block content %}	
+{% endblock %}	
+
+<footer class="main-footer">
+    &copy; 2021 Dahra Global Technologies & Consultancy Services W.L.L. All Rights Reserved.
+</footer>
+
+<!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->	
+	<!-- Page Content overlay -->
+
+	<!-- Vendor JS -->
+	<script src="{% static 'website/js/vendors.min.js' %}"></script>
+  <script src="{% static 'website/assets/icons/feather-icons/feather.min.js' %}"></script>  
+  
+	<!-- Maximum Admin App -->
+	<script src="{% static 'website/js/template.js' %}"></script>	
+  <script src="{% static 'website/js/pages/validation.js' %}"></script>
+  <script src="{% static 'website/js/pages/form-validation.js' %}"></script>
+
+  {% if showURL == "/inw_data_table" or showURL == "/inw_all_table" %}
+  <script src="{% static 'website/js/pages/data-table.js' %}"></script>
+  <script src="{% static 'website/assets/vendor_components/datatable/datatables.min.js' %}"></script>	
+  {% endif %}
+</body>
+</html>
+{% else %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="{% static 'website/images/favicon.ico' %}">
+
+	<title>Inwarding System - Insert Inwards</title>
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="{% static 'website/css/vendors_css.css' %}">
+
+	<!-- Style-->  
+	<link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'website/css/skin_color.css' %}">
+
+</head>
+	
+<body class="hold-transition theme-primary bg-img" style="background-image: url({% static 'website/images/auth-bg/bg-1.jpg' %})">
+	
+	<div class="container h-p100">
+		<div class="row align-items-center justify-content-md-center h-p100">	
+			
+			<div class="col-12">
+				<div class="row justify-content-center g-0">
+					<div class="col-lg-5 col-md-5 col-12">
+						<div class="bg-white rounded10 shadow-lg">
+							<div class="content-top-agile p-20 pb-0">
+								<h2 class="text-primary">This page is restricted, click button to sign in</h2>							
+							</div>
+							<div class="p-40">
+									  <div class="row">
+										<!-- /.col -->
+										<div class="col-12 text-center">
+										  <a href="{% url 'auth_login' %}" class="btn btn-danger" role="button" aria-disabled="true"><i class="ti-user me-2"></i>SIGN IN</a>
+										</div>
+										<!-- /.col -->
+									  </div>
+								</form>	
+								
+							</div>						
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Vendor JS -->
+	<script src="{% static 'website/js/vendors.min.js' %}"></script>
+  <script src="{% static 'website/assets/icons/feather-icons/feather.min.js' %}"></script>  
+
+</body>
+</html>
+{% endif %}

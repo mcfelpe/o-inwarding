@@ -1,0 +1,95 @@
+{% load static %}
+{% load icon %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="{% static 'website/images/favicon.ico' %}">
+
+	<title>Inwarding System - Insert Inwards</title>
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="{% static 'website/css/vendors_css.css' %}">
+
+	<!-- Style-->  
+	<link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'website/css/skin_color.css' %}">
+
+</head>
+	
+<body class="hold-transition theme-primary bg-img" style="background-image: url({% static 'website/images/auth-bg/bg-1.jpg' %})">
+	
+	<div class="container h-p100">
+		<div class="row align-items-center justify-content-md-center h-p100">	
+			
+			<div class="col-12">
+				<div class="row justify-content-center g-0">
+					<div class="col-lg-5 col-md-5 col-12">
+						<div class="bg-white rounded10 shadow-lg">
+							<div class="content-top-agile p-20 pb-0">
+								<h2 class="text-primary">Dahra Global Inwarding System</h2>
+								
+								{% if messages %}
+
+									{% for message in messages %}
+										<script>window.setTimeout(function() {
+											$(".alert").fadeTo(500, 0).slideUp(500, function(){
+											$(this).remove(); 
+											});
+										}, 2000);</script>
+
+										<div class="alert alert-success" role="alert">
+											{{ message }}
+											</div>
+									{% endfor %}
+
+								{% endif %}
+															
+							</div>
+							<div class="p-40">
+								<form action="" method="post">
+									{% csrf_token %}
+									<div class="form-group">
+										<div class="input-group mb-3">
+											<span class="input-group-text bg-transparent">{% icon "user" class="css-class" height="12" width="12" %}</span>
+											<input type="text" class="form-control ps-15 bg-transparent" placeholder="Username" name="username">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group mb-3">
+											<span class="input-group-text  bg-transparent">{% icon "lock" class="css-class" height="12" width="12" %}</i></span>
+											<input type="password" class="form-control ps-15 bg-transparent" placeholder="Password" name="password">
+										</div>
+									</div>
+									  <div class="row">
+										
+										
+										<!-- /.col -->
+										<div class="col-12 text-center">
+										  <button type="submit" class="btn btn-danger mt-10">SIGN IN</button>
+										</div>
+										<!-- /.col -->
+									  </div>
+								</form>	
+								
+							</div>						
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Vendor JS -->
+	<script src="{% static 'website/js/vendors.min.js' %}"></script>
+  	<script src="{% static 'website/assets/icons/feather-icons/feather.min.js' %}"></script>  
+
+</body>
+</html>
