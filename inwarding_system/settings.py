@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['inwarding.herokuapp.com','localhost','127.0.0.1'] # Use this setting on the live heroku server
+ALLOWED_HOSTS = ['dahrainw.herokuapp.com','localhost','127.0.0.1'] # Use this setting on the live heroku server
 # ALLOWED_HOSTS = ['127.0.0.1'] Use this setting during development locally
 
 
