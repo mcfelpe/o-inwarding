@@ -40,6 +40,7 @@ DEPARMENT_CHOICES = (
     ('MANAGEMENT','MANAGEMENT'),
     ('OPERATIONS','OPERATIONS'),
     ('T&S','T&S'),
+    ('NAVAC','NAVAC'),
     ('E&M','E&M'),
     ('S&S','S&S'),
     ('FCN','FCN'),
