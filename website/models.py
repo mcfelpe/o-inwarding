@@ -7,7 +7,7 @@ class Inwarding(models.Model):
     inw_item_name = models.CharField(max_length=200)
     inw_location = models.CharField(max_length=100)
     inw_description = models.CharField(max_length=200)
-    inw_make_model = models.CharField(max_length=200)
+    inw_make_model = models.CharField(max_length=200, blank=True)
     inw_quantity = models.IntegerField()
     inw_vendor_name = models.CharField(max_length=200)
     inw_date_of_purchase = models.DateField(max_length=200)

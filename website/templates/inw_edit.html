@@ -20,134 +20,139 @@
 			</div>
 			  
 			<!-- /.box-header -->
+			<form class="needs-validation" novalidate method="POST" enctype="multipart/form-data" action="">
+			{% csrf_token %}
 			<div class="box-body">
 			  <div class="row">
-				<div class="col">
+				<div class="col-sm">										
+					<div class="form-group">
+						<h5>Item Name&nbsp; <span class="text-danger">*</span></h5>
+						<div class="controls">
+							<input type="text" name="inw_item_name" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_item_name }}"> 
+							<div class="form-control-feedback"><small>Insert the item you purchased.  This field is <code>required</code></small>.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<h5>Location <span class="text-danger">*</span></h5>
 					
-					<form class="needs-validation" novalidate method="POST" enctype="multipart/form-data" action="">
-					{% csrf_token %}
-					  <div class="row">
-						<div class="col-12">						
-							<div class="form-group">
-								<h5>Item Name&nbsp; <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="text" name="inw_item_name" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_item_name }}"> 
-									<div class="form-control-feedback"><small>Insert the item you purchased.  This field is <code>required</code></small>.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<h5>Location <span class="text-danger">*</span></h5>
-							
-								<div class="controls">
-									<select name="inw_location" id="select" required class="form-select">
-										<option value="">Select Location</option>
-										<option value="Dahra Main Office" {{ loc1 }}>Dahra Main Office</option>
-										<option value="KNO"	{{ loc2 }}>KNO</option>
-										<option value="ISC" {{ loc3 }}>ISC</option>
-										<option value="Messaid" {{ loc4 }}>Messaid</option>
-									</select>
-								</div>
-								<div class="form-control-feedback"><small>Select on the dropdown the location where this item will be used.  This field is <code>required</code></small>.</div>
-							</div>
-							<div class="form-group">
-								<h5>Description <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<textarea name="inw_description" id="description" class="form-control" required placeholder="Item Description">{{ edit_item.inw_description }}</textarea>
-								</div>
-								<div class="form-control-feedback"><small>Give a brief description of the item.  This field is <code>required</code></small>.</div>
-							</div>
-							<div class="form-group">
-								<h5>Make & Model&nbsp; <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="text" name="inw_make_model" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_make_model }}"> 
-									<div class="form-control-feedback"><small>What is the make & model of this item.  This field is <code>required</code></small>.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<h5>Quantity&nbsp; <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="number" name="inw_quantity" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_quantity }}"> 
-									<div class="form-control-feedback"><small>How many did you purchased?  This field is <code>required</code></small>.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<h5>Vendor Name&nbsp;&nbsp; <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="text" name="inw_vendor_name" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_vendor_name }}">
-									<div class="form-control-feedback"><small>Insert the name of the vendor where the item is purchased.  This field is <code>required</code></small>.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<h5>Date of Purchase&nbsp; <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="date" name="inw_date_of_purchase" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_date_of_purchase|date:'Y-m-d' }}"> </div> 
-									<div class="form-control-feedback"><small>Insert the date when the item is purchased.  This field is <code>required</code></small>.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<h5>Unit Cost <span class="text-danger">*</span></h5>
-								<div class="input-group"> <span class="input-group-addon">QAR</span>
-									<input type="number" name="inw_unit_cost" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_unit_cost }}">	
-								</div>
-								<div class="form-control-feedback"><small>Select the currency and input the cost of the item.  This field is <code>required</code></small>.</div>
-							</div>
-						  	<div class="form-group">
-								<h5>Category <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<select name="inw_category" id="category" required class="form-select">
-										<option value="">Select Category</option>
-										<option value="Permanent - Computer & Peripheral" {{ cat1 }}>Permanent - Computer & Peripheral</option>
-										<option value="Permanent - Furniture & Fixtures" {{ cat2 }}>Permanent - Furniture & Fixtures</option>
-										<option value="Permanent - Office Equipment" {{ cat3 }}>Permanent - Office Equipment</option>
-										<option value="Permanent - Office Renovation" {{ cat4 }}>Permanent - Office Renovation</option>
-										<option value="Permanent - Motor Vehicle" {{ cat5 }}>Permanent - Motor Vehicle</option>
-										<option value="Consumables - IT Consumables" {{ cat6 }}>Consumables - IT Consumables</option>
-										<option value="Consumables - Hygiene" {{ cat7 }}>Consumables - Hygiene</option>
-										<option value="Consumables - Pantry" {{ cat8 }}>Consumables - Pantry</option>
-										<option value="Consumables - Stationery" {{ cat9 }}>Consumables - Stationery</option>
-									</select>
-									<div class="form-control-feedback"><small>Select the category from the dropdown.  This field is <code>required</code></small>.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<h5>Type <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<select name="inw_type" id="type" required class="form-select">
-										<option value="">Select Type</option>
-										<option value="Inventory" {{ item1 }}>Inventory</option>
-										<option value="Services" {{ item2 }}>Services</option>
-									</select>
-									<div class="form-control-feedback"><small>Select the type from the dropdown.  This field is <code>required</code></small>.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<h5>Remarks</h5>
-								<div class="controls">
-									<textarea name="inw_remarks" id="textarea" class="form-control" placeholder="Additional Remarks">{{ edit_item.inw_remarks }}</textarea>
-									<div class="form-control-feedback"><small>Add additional remarks if there's any.</small></div>
-								</div>
-							</div>
-							<div class="form-group">
-								<h5>Upload Screenshot</h5>
-								<div class="controls">
-									<input type="file" name="inw_img" id="inw_img" class="form-control">
-									<div class="form-control-feedback"><small>Upload pdf/jpg file of the bill</small>.</div>
-								</div>
-							</div>
-							{% if edit_item.inw_img %}
+						<div class="controls">
+							<select name="inw_location" id="select" required class="form-select">
+								<option value="">Select Location</option>
+								<option value="Dahra Main Office" {{ loc1 }}>Dahra Main Office</option>
+								<option value="KNO"	{{ loc2 }}>KNO</option>
+								<option value="ISC" {{ loc3 }}>ISC</option>
+								<option value="Messaid" {{ loc4 }}>Messaid</option>
+								<option value="NTW" {{ loc5 }}>NTW</option>
+								<option value="NWOTC" {{ loc6 }}>NWOTC</option>
+								<option value="Navy School" {{ loc7 }}>Navy School</option>
+								<option value="SVP" {{ loc8 }}>SVP</option>
+								<option value="Dahra Training Store" {{ loc9 }}>Dahra Training Store</option>
+							</select>
+						</div>
+						<div class="form-control-feedback"><small>Select on the dropdown the location where this item will be used.  This field is <code>required</code></small>.</div>
+					</div>
+					<div class="form-group">
+						<h5>Description <span class="text-danger">*</span></h5>
+						<div class="controls">
+							<textarea name="inw_description" id="description" class="form-control" required placeholder="Item Description">{{ edit_item.inw_description }}</textarea>
+						</div>
+						<div class="form-control-feedback"><small>Give a brief description of the item.  This field is <code>required</code></small>.</div>
+					</div>
+					<div class="form-group">
+						<h5>Make & Model</h5>
+						<div class="controls">
+							<input type="text" name="inw_make_model" class="form-control" value="{{ edit_item.inw_make_model }}"> 
+							<div class="form-control-feedback"><small>What is the make & model of this item.</small>.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<h5>Quantity&nbsp; <span class="text-danger">*</span></h5>
+						<div class="controls">
+							<input type="number" name="inw_quantity" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_quantity }}"> 
+							<div class="form-control-feedback"><small>How many did you purchased?  This field is <code>required</code></small>.</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<h5>Vendor Name&nbsp;&nbsp; <span class="text-danger">*</span></h5>
+						<div class="controls">
+							<input type="text" name="inw_vendor_name" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_vendor_name }}">
+							<div class="form-control-feedback"><small>Insert the name of the vendor where the item is purchased.  This field is <code>required</code></small>.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm">
+					<div class="form-group">
+						<h5>Date of Purchase&nbsp; <span class="text-danger">*</span></h5>
+						<div class="controls">
+							<input type="date" name="inw_date_of_purchase" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_date_of_purchase|date:'Y-m-d' }}"> </div> 
+							<div class="form-control-feedback"><small>Insert the date when the item is purchased.  This field is <code>required</code></small>.</div>
+						</div>
+					
+					<div class="form-group">
+						<h5>Unit Cost <span class="text-danger">*</span></h5>
+						<div class="input-group"> <span class="input-group-addon">QAR</span>
+							<input type="number" name="inw_unit_cost" class="form-control" required data-validation-required-message="This field is required" value="{{ edit_item.inw_unit_cost }}">	
+						</div>
+						<div class="form-control-feedback"><small>Select the currency and input the cost of the item.  This field is <code>required</code></small>.</div>
+					</div>
+					  <div class="form-group">
+						<h5>Category <span class="text-danger">*</span></h5>
+						<div class="controls">
+							<select name="inw_category" id="category" required class="form-select">
+								<option value="">Select Category</option>
+								<option value="Permanent - Computer & Peripheral" {{ cat1 }}>Permanent - Computer & Peripheral</option>
+								<option value="Permanent - Furniture & Fixtures" {{ cat2 }}>Permanent - Furniture & Fixtures</option>
+								<option value="Permanent - Office Equipment" {{ cat3 }}>Permanent - Office Equipment</option>
+								<option value="Permanent - Office Renovation" {{ cat4 }}>Permanent - Office Renovation</option>
+								<option value="Permanent - Motor Vehicle" {{ cat5 }}>Permanent - Motor Vehicle</option>
+								<option value="Consumables - IT Consumables" {{ cat6 }}>Consumables - IT Consumables</option>
+								<option value="Consumables - Hygiene" {{ cat7 }}>Consumables - Hygiene</option>
+								<option value="Consumables - Pantry" {{ cat8 }}>Consumables - Pantry</option>
+								<option value="Consumables - Stationery" {{ cat9 }}>Consumables - Stationery</option>
+								<option value="Training Purpose" {{ cat10 }}>Training Purpose</option>
+								<option value="Initial Installation" {{ cat11 }}>Initial Installation</option>
+							</select>
+							<div class="form-control-feedback"><small>Select the category from the dropdown.  This field is <code>required</code></small>.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<h5>Type <span class="text-danger">*</span></h5>
+						<div class="controls">
+							<select name="inw_type" id="type" required class="form-select">
+								<option value="">Select Type</option>
+								<option value="Inventory" {{ item1 }}>Inventory</option>
+								<option value="Services" {{ item2 }}>Services</option>
+							</select>
+							<div class="form-control-feedback"><small>Select the type from the dropdown.  This field is <code>required</code></small>.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<h5>Remarks</h5>
+						<div class="controls">
+							<textarea name="inw_remarks" id="textarea" class="form-control" placeholder="Additional Remarks">{{ edit_item.inw_remarks }}</textarea>
+							<div class="form-control-feedback"><small>Add additional remarks if there's any.</small></div>
+						</div>
+					</div>
+					<div class="form-group">
+						<h5>Upload Screenshot</h5>
+						<div class="controls">
+							<input type="file" name="inw_img" id="inw_img" class="form-control">
+							<div class="form-control-feedback"><small>Upload jpg/png file of the bill (Other formats not accepted)</small>.</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.col -->
+			  </div>
+			  {% if edit_item.inw_img %}
 							<img src="{{ edit_item.inw_img.url }}">
 							{% endif %}<br /><br />
 						<div class="text-xs-right">
 							<button type="submit" class="btn btn-info">Submit</button>
 						</div>
-					</div>
-				</form>
-	
-				</div>
-				<!-- /.col -->
-			  </div>
 			  <!-- /.row -->
 			</div>
+		</form>
 			<!-- /.box-body -->
 		  </div>
 		  <!-- /.box -->

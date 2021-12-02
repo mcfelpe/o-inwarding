@@ -130,11 +130,37 @@ def inw_edit(request, edit_item_id):
             loc3 = "selected"
         else:
             loc3 = ""
+        
         if edit_item.inw_location == "Messaid":
             loc4 = "selected"
         else: 
             loc4 = ""
-        
+
+        if edit_item.inw_location == "NTW":
+            loc5 = "selected"
+        else: 
+            loc5 = ""
+
+        if edit_item.inw_location == "NWOTC":
+            loc6 = "selected"
+        else: 
+            loc6 = ""
+
+        if edit_item.inw_location == "Navy School":
+            loc7 = "selected"
+        else: 
+            loc7 = ""
+
+        if edit_item.inw_location == "SVP":
+            loc8 = "selected"
+        else: 
+            loc8 = ""
+            
+        if edit_item.inw_location == "Dahra Training Store":
+            loc9 = "selected"
+        else: 
+            loc9 = ""
+
         if edit_item.inw_category == "Permanent - Computer & Peripheral":
             cat1= "selected"
         else:
@@ -171,6 +197,14 @@ def inw_edit(request, edit_item_id):
             cat9= "selected"
         else:
             cat9 =""
+        if edit_item.inw_category == "Training Purpose":
+            cat10= "selected"
+        else:
+            cat10 =""
+        if edit_item.inw_category == "Initial Installation":
+            cat11= "selected"
+        else:
+            cat11 =""
             
         if edit_item.inw_type == "Inventory":
             item1 = "selected"
@@ -181,7 +215,7 @@ def inw_edit(request, edit_item_id):
         else:
             item2 =""
             
-        return render(request, 'inw_edit.html', {'edit_item':edit_item, 'loc1':loc1, 'loc2':loc2, 'loc3':loc3, 'loc4':loc4, 'cat1':cat1, 'cat2':cat2, 'cat3':cat3, 'cat4':cat4, 'cat5':cat5, 'cat6':cat6, 'cat7':cat7, 'cat8':cat8, 'cat9':cat9, 'item1':item1, 'item2':item2})
+        return render(request, 'inw_edit.html', {'edit_item':edit_item, 'loc1':loc1, 'loc2':loc2, 'loc3':loc3, 'loc4':loc4, 'loc5':loc5, 'loc6':loc6, 'loc7':loc7, 'loc8':loc8, 'loc9':loc9, 'cat1':cat1, 'cat2':cat2, 'cat3':cat3, 'cat4':cat4, 'cat5':cat5, 'cat6':cat6, 'cat7':cat7, 'cat8':cat8, 'cat9':cat9, 'cat10':cat10, 'cat11':cat11, 'item1':item1, 'item2':item2})
         
 # Function for HOD approval of an inward based on the item number being passed
 def inw_hod_app(request, hod_item_id):
